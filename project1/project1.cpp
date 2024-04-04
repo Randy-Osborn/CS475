@@ -115,10 +115,10 @@ main( int argc, char *argv[ ] )
 			float aftery  = AfterY[n];
 			float distx   = DistX[n];
 
-			float vx = ?????
-			float t  = ?????
-			float dx  = ?????
-			if(  ????? <= RADIUS )
+            float vx = sqrt(2. * GRAVITY * (beforey - aftery));
+            float t = sqrt((2. * aftery) / GRAVITY);
+            float dx = vx * t;
+            if(  fabs(dx - distx) <= RADIUS )
 				numSuccesses++;
 
                 } // for( # of  monte carlo trials )
