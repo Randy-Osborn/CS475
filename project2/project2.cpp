@@ -48,9 +48,7 @@ void findPrecipitation(int month);
 int main(int argc, char const *argv[])
 {
 #ifdef _OPENMP
-#ifndef CSV
     fprintf(stderr, "OpenMP is supported -- version = %d\n", _OPENMP);
-#endif
 #else
     fprintf(stderr, "No OpenMP support!\n");
     return 1;
@@ -62,10 +60,18 @@ int main(int argc, char const *argv[])
     NowYear = 2024;
 
     // starting state (feel free to change this if you want):
-    NowNumDeer = 10;
-    NowHeight = 5.;
+    NowNumDeer = 5;
+    NowHeight = 15.;
     NowNumHunter = 2;
+
+    findPrecipitation(NowMonth);
+    findTemperature(NowMonth);
+
+
+    omp_init_lock(&Lock);
+    InitBarrier(4);
     omp_set_num_threads(4); // same as # of sections
+    
 #pragma omp parallel sections
     {
 #pragma omp section
@@ -220,21 +226,22 @@ void MyAgent()
     {
         // compute a temporary next-value for this quantity
         // based on the current state of the simulation:
-        int deerKilled = 1 * (NowNumHunter / 3); // 1 deer feeds 3 hunters for a month
-                                                 // Calculate the percentage of deer relative to the hunter population
-        float deerToHunterRatio = (float)NowNumHunter / NowNumDeer;
+        int grainPlanted = NowNumHunter* 2;
 
         // DoneComputing barrier:
         WaitBarrier();
-        if (deerToHunterRatio > .30 && NowMonth == 9 && NowNumHunter >= 2)
+        if (NowNumDeer/2 > NowNumHunter && NowNumHunter >= 0)
         {
             NowNumHunter++;
-        }
-        if (deerToHunterRatio < .2)
+        }else
         {
             NowNumHunter--;
         }
-        NowNumDeer -= deerKilled;
+        NowNumDeer--;
+        NowHeight += grainPlanted - NowNumHunter;//each hunter plants doupbe what they consume. 
+        if(NowNumHunter < 0 ){
+            NowNumHunter = 0;
+        }
         // DoneAssigning barrier:
         WaitBarrier();
 
