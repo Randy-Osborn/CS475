@@ -60,8 +60,8 @@ int main(int argc, char const *argv[])
     NowYear = 2024;
 
     // starting state (feel free to change this if you want):
-    NowNumDeer = 5;
-    NowHeight = 15.;
+    NowNumDeer = 10;
+    NowHeight = 40;
     NowNumHunter = 2;
 
     findPrecipitation(NowMonth);
