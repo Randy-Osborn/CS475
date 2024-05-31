@@ -1,0 +1,31 @@
+Running with 1 processes
+Node   0 entered DoOneLocalAutocorrelation( )
+  1 processors,    8388608 elements,    328.94 mega-autocorrelations computed per second
+Running with 2 processes
+Node   0 entered DoOneLocalAutocorrelation( )
+Node   1 entered DoOneLocalAutocorrelation( )
+  2 processors,    8388608 elements,    640.37 mega-autocorrelations computed per second
+Running with 4 processes
+Node   1 entered DoOneLocalAutocorrelation( )
+Node   2 entered DoOneLocalAutocorrelation( )
+Node   0 entered DoOneLocalAutocorrelation( )
+Node   3 entered DoOneLocalAutocorrelation( )
+  4 processors,    8388608 elements,   1196.47 mega-autocorrelations computed per second
+Running with 6 processes
+Node   1 entered DoOneLocalAutocorrelation( )
+Node   2 entered DoOneLocalAutocorrelation( )
+Node   3 entered DoOneLocalAutocorrelation( )
+Node   4 entered DoOneLocalAutocorrelation( )
+Node   0 entered DoOneLocalAutocorrelation( )
+Node   5 entered DoOneLocalAutocorrelation( )
+  6 processors,    8388608 elements,   1706.76 mega-autocorrelations computed per second
+Running with 8 processes
+Node   1 entered DoOneLocalAutocorrelation( )
+Node   2 entered DoOneLocalAutocorrelation( )
+Node   3 entered DoOneLocalAutocorrelation( )
+Node   4 entered DoOneLocalAutocorrelation( )
+Node   5 entered DoOneLocalAutocorrelation( )
+Node   6 entered DoOneLocalAutocorrelation( )
+Node   0 entered DoOneLocalAutocorrelation( )
+Node   7 entered DoOneLocalAutocorrelation( )
+  8 processors,    8388608 elements,   2129.84 mega-autocorrelations computed per second
